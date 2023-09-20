@@ -36,7 +36,7 @@ def filter_captions(data):
     caps = [d['caption'] for d in data]
     encodings = []
     for idx in range(0, len(data), bs):
-        encodings += tokenizer.batch_encode_plus(caps[idx:idx+bs], return_tensors='np')['input_ids'].tolist()
+        encodings += tokenizer.encode_plus(caps[idx], return_tensors='np')['input_ids'].tolist()
     
     filtered_image_ids, filtered_captions = [], []
 
@@ -96,6 +96,7 @@ def filter_nns(nns, xb_image_ids, captions, xq_image_ids):
     for nns_list, image_id in zip(nns, xq_image_ids):
         good_nns = []
         for nn in zip(nns_list):
+            nn = int(nn[0])
             if xb_image_ids[nn] == image_id:
                 continue
             good_nns.append(captions[nn])
