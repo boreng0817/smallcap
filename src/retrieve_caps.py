@@ -35,7 +35,7 @@ def filter_captions(data):
     image_ids = [d['image_id'] for d in data]
     caps = [d['caption'] for d in data]
     encodings = []
-    for idx in range(0, len(data), bs):
+    for idx in range(len(data)):
         encodings += tokenizer.encode_plus(caps[idx], return_tensors='np')['input_ids'].tolist()
     
     filtered_image_ids, filtered_captions = [], []
