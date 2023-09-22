@@ -174,6 +174,7 @@ if __name__ == '__main__':
     parser.add_argument("--gradient_steps", type=int, default=1, help="Number of gradient accumulation steps")
 
     parser.add_argument("--ablation_visual", action="store_true", default=False, help="Whether to blank visual features")
+    parser.add_argument("--local_rank", help="for torch.distributed.launch")
 
     args = parser.parse_args()
 
