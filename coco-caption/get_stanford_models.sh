@@ -18,4 +18,8 @@ mv $SPICELIB/$CORENLP/stanford-corenlp-3.6.0-models.jar $SPICELIB/
 rm -f stanford-corenlp-full-2015-12-09.zip
 rm -rf $SPICELIB/$CORENLP/
 
+git clone https://github.com/daqingliu/coco-caption.git
+cp coco-caption/pycocoevalcap/spice/lib/* pycocoevalcap/spice/lib
+rm -rf coco-caption
+
 echo "Done."
